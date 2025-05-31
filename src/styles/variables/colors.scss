@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+$color-theme: (
+    app-white: #ffffff,
+    app-grey: #F5F5F5, 
+    app-yellow: #DAA520,
+    goldenrod: #DAA520,
+    app-black: #000000,
+    app-dark-grey: #333333,
+);
+
+@function colorTheme($key) { 
+    @return map-get($color-theme, $key);
+}

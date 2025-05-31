@@ -1,0 +1,33 @@
+@use '../variables/fonts.scss' as font;
+@use '../variables/colors.scss' as colors;
+@use '../variables/utils.scss' as util;
+// @import '../reset/reset.scss';
+
+body {
+  @include util.gutter-reset;
+  box-sizing: border-box;
+  @include util.width-body;
+  height: 100vh;
+  max-height: 100%;
+
+  .container, .offcanvas-header, .offcanvas-body, .row .col, .card, .card-body, .card-img-overlay, .list-group {
+    @include util.gutter-reset;
+  }
+
+  .container, .row, .col, .card {
+    @include util.width-full;
+  }
+
+  .container {
+    @include util.display-flex-center;
+  }
+
+  .list-group-item, a, h4 {
+    @include util.gutter-reset;
+  }
+
+  h2, .h1, .h2, .h3, .h4, .h5, p {
+    @include util.gutter-reset;
+    @include util.font-center;
+  }
+}

@@ -1,0 +1,58 @@
+@use '../variables/colors.scss' as colors;
+@use '../variables/fonts.scss' as font;
+@use '../variables/utils.scss' as util;
+
+.contact-container {
+  @include util.display-grid-contact;
+  background-color: colors.colorTheme(app-dark-grey);
+  @media (min-width: 48rem) {
+    padding: 2rem !important;
+  }
+
+  .contact-title {
+    @include util.font-contact-title;
+    @include util.color-yellow;
+    padding: 1rem;
+    @media (min-width: 62rem) {
+      justify-self: start;
+    }
+    @media (min-width: 75rem) {
+      justify-content: center;
+      justify-self: center;
+    }
+  }
+
+  .contact-form {
+    @include util.display-flex-column;
+    @include util.width-full;
+    gap: 1rem;
+    padding: 1rem;
+
+    .form-label {
+      @include util.font-form-label;
+      margin: 1rem 0;
+      @include util.color-white;
+    }
+
+    .form-control {
+      background-color: transparent;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid colors.colorTheme(app-white);
+      @include util.color-white;
+      width: 100%;
+      &::placeholder {
+        color: colors.colorTheme(app-white);
+        padding: 1.25em;
+        opacity: 65%;
+      }
+    }
+
+    .contact-btn {
+      @include util.btn-contact;
+      @include util.font-contact-btn;
+      margin-top: 1rem;
+      align-self: center;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@use '../variables/fonts.scss' as font;
+@use '../variables/colors.scss' as colors;
+@use '../variables/utils.scss' as util;
+
+$original-width: 19.125rem;
+$original-height: 25.4375rem;
+$middle-height: 42.3125rem;
+$middle-width: 38rem;
+
+.services-container {
+  background-color: #D3D3D3;
+
+  .services-row {
+    @include util.display-flex-column-services;
+    padding: 1rem;
+    gap: 1rem;
+    @media (min-width: 36rem) {
+      gap: 0;
+    }
+    @media (min-width: 75rem) {
+      padding: 3rem;
+    }
+    @media (min-width: 90rem) {
+      gap: 4rem;
+    }
+
+    .services-cards {
+      border-radius: 0;
+      border: none;
+      padding: 0;
+      background-color: colors.colorTheme(app-dark-grey);
+      @media (min-width: 36rem) {
+        max-width: 10rem;
+        height: auto;
+      }
+      @media (min-width: 48rem) {
+        max-width: 14rem;
+      }
+      @media (min-width: 62rem) {
+        max-width: 286px;
+        max-height: 388px;
+      }
+
+      &.wheel {
+        @media (min-width: 75rem) {
+          width: 484px;
+          height: 646px;
+          max-height: $middle-height;
+          max-width: $middle-width;
+        }
+      }
+
+      .service-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .service {
+        @include util.display-flex-center;
+        padding: 1rem;
+
+        .service-name {
+          @include util.font-service-name;
+          @include util.color-yellow;
+        }
+      }
+    }
+  }
+}

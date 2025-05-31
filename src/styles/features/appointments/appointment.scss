@@ -1,0 +1,54 @@
+@use '../../variables/colors.scss' as colors;
+@use '../../variables/fonts.scss' as font;
+@use '../../variables/utils.scss' as util;
+
+.appt-container {
+  @include util.bg-appt-image;
+  @media (min-width: 62rem) {
+    height: 40vh;
+  }
+  @media (min-width: 75rem) {
+    height: 50vh;
+  }
+  @media (min-width: 90rem) {
+    height: 80vh;
+  }
+
+  .appt-row {
+    @include util.display-grid-appt;
+    gap: 1.25rem;
+    padding: 1.5rem;
+
+    .appt-title, .appt-text {
+      padding: 1rem;
+    }
+
+    .appt-title {
+      @include util.font-appt-title;
+      @include util.color-white;
+      @media (min-width: 36rem) {
+        max-width: 24rem;
+      }
+      @media (min-width: 48rem) {
+        padding: 0;
+      }
+      @media (min-width: 75rem) {
+        max-width: 36rem;
+      }
+    }
+
+    .appt-text {
+      @include util.font-appt-text;
+      @include util.color-white;
+      max-width: 32rem;
+      @media (min-width: 62rem) {
+        max-width: 24rem;
+      }
+    }
+
+    .appt-btn {
+      @include util.btn-appt;
+      @include util.font-appt-btn;
+    }
+  }
+}

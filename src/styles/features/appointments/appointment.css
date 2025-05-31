@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&display=swap" rel="stylesheet');
+.appt-container {
+  background-image: url("../../../app/assets/images/nicecar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  background-position-y: 65%;
+}
+@media (min-width: 62rem) {
+  .appt-container {
+    background-position-y: 45%;
+    height: 50vh;
+  }
+}
+@media (min-width: 75rem) {
+  .appt-container {
+    height: 60vh;
+  }
+}
+@media (min-width: 90rem) {
+  .appt-container {
+    height: 70vh;
+  }
+}
+@media (min-width: 100rem) {
+  .appt-container {
+    height: 75vh;
+  }
+}
+@media (min-width: 120rem) {
+  .appt-container {
+    height: 85vh;
+  }
+}
+.appt-container .appt-row {
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+@media (min-width: 48rem) {
+  .appt-container .appt-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 2rem;
+    gap: 1.5rem;
+    justify-content: start;
+  }
+}
+@media (min-width: 62rem) {
+  .appt-container .appt-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100%;
+  }
+}
+.appt-container .appt-row .appt-title, .appt-container .appt-row .appt-text {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.appt-container .appt-row .appt-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+@media (min-width: 36rem) {
+  .appt-container .appt-row .appt-title {
+    max-width: 20rem;
+  }
+}
+@media (min-width: 48rem) {
+  .appt-container .appt-row .appt-title {
+    font-size: 2.25rem;
+    max-width: 30rem;
+    text-align: start;
+  }
+}
+@media (min-width: 62rem) {
+  .appt-container .appt-row .appt-title {
+    align-self: end;
+    justify-self: center;
+    text-align: center;
+  }
+}
+@media (min-width: 75rem) {
+  .appt-container .appt-row .appt-title {
+    font-size: 3rem;
+    max-width: unset;
+  }
+}
+@media (min-width: 90rem) {
+  .appt-container .appt-row .appt-title {
+    padding: 1rem;
+  }
+}
+@media (min-width: 100rem) {
+  .appt-container .appt-row .appt-title {
+    padding: 0 4rem;
+  }
+}
+@media (min-width: 120rem) {
+  .appt-container .appt-row .appt-title {
+    padding: 0 5rem;
+    max-width: 50rem;
+  }
+}
+.appt-container .appt-row .appt-text {
+  font-family: "Libre Baskerville", serif;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  max-width: 22rem;
+}
+@media (min-width: 48rem) {
+  .appt-container .appt-row .appt-text {
+    font-size: 1rem;
+    max-width: 26rem;
+    line-height: 1.2;
+    text-align: start;
+  }
+}
+@media (min-width: 62rem) {
+  .appt-container .appt-row .appt-text {
+    grid-row: 2;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+  }
+}
+.appt-container .appt-row .appt-btn {
+  background-color: transparent;
+  color: #DAA520;
+  border: 1px solid #DAA520;
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  font-family: "Syne", serif;
+  font-size: 1rem;
+  max-width: 20rem;
+  padding: 1rem 1.5rem;
+}
+.appt-container .appt-row .appt-btn:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+@media (min-width: 62rem) {
+  .appt-container .appt-row .appt-btn {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+  }
+}/*# sourceMappingURL=appointment.css.map */
