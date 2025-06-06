@@ -1,139 +1,138 @@
 // ==========================================================================
-// BUTTONS - Button component styles
+// BUTTONS - DRY Component System
 // ==========================================================================
 
 .btn {
   @include button-base;
 
-  // SIZES
+  // SIZES (DRY - using component tokens)
   &--sm {
-    padding: $spacing-xs $spacing-sm;
-    font-size: $font-size-sm;
+    @include button-base(sm);
   }
-
   &--md {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-size-base;
+    @include button-base(base);
   }
-
   &--lg {
-    padding: $spacing-md $spacing-lg;
-    font-size: $font-size-lg;
+    @include button-base(lg);
   }
 
-  // VARIANTS
+  // VARIANTS (DRY - using color functions)
   &--primary {
-    @include button-variant($color-primary);
+    @include button-variant(color(primary));
   }
-
   &--secondary {
-    @include button-variant($color-secondary);
+    @include button-variant(color(secondary));
   }
-
   &--success {
-    @include button-variant($color-success);
+    @include button-variant(color(success));
   }
-
   &--warning {
-    @include button-variant($color-warning, $color-dark);
+    @include button-variant(color(warning), color(dark));
   }
-
   &--danger {
-    @include button-variant($color-danger);
+    @include button-variant(color(danger));
   }
 
-  // OUTLINE VARIANTS
+  // OUTLINE VARIANTS (DRY)
   &--outline-primary {
-    @include button-outline($color-primary);
+    @include button-outline(color(primary));
   }
-
   &--outline-secondary {
-    @include button-outline($color-secondary);
+    @include button-outline(color(secondary));
   }
 
   // SPECIAL VARIANTS
   &--ghost {
     background-color: transparent;
-    color: $color-primary;
+    color: color(primary);
 
     &:hover:not(:disabled) {
-      background-color: alpha($color-primary, 0.1);
+      background-color: alpha(color(primary), 0.1);
     }
   }
 
   &--link {
     background-color: transparent;
-    color: $color-primary;
+    color: color(primary);
     text-decoration: underline;
 
     &:hover:not(:disabled) {
-      color: $color-primary-dark;
+      color: color(primary-dark);
     }
   }
 
-  // FULL WIDTH
+  // UTILITIES (DRY)
   &--full {
     width: 100%;
   }
+  &--icon {
+    padding: spacing(sm);
+    aspect-ratio: 1;
 
-  // LOADING STATE
+    svg {
+      @include size(1em);
+    }
+  }
+
+  // LOADING STATE (DRY)
   &--loading {
     position: relative;
     color: transparent;
 
     &::after {
       content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      top: 50%;
-      left: 50%;
+      @include absolute-center;
+      @include size(16px);
       margin-left: -8px;
       margin-top: -8px;
-      border-radius: 50%;
+      border-radius: border-radius(full);
       border: 2px solid transparent;
       border-top-color: currentColor;
       animation: spin 1s linear infinite;
     }
   }
 
-  // ICON BUTTONS
-  &--icon {
-    padding: $spacing-sm;
-    width: auto;
-    aspect-ratio: 1;
-
-    svg {
-      width: 1em;
-      height: 1em;
-    }
-  }
-
-  // BUTTON GROUPS
+  // BUTTON GROUPS (DRY)
   &-group {
-    display: inline-flex;
+    @include flex(row, flex-start, stretch);
 
     .btn {
       border-radius: 0;
 
       &:first-child {
-        border-top-left-radius: $border-radius;
-        border-bottom-left-radius: $border-radius;
+        border-top-left-radius: border-radius();
+        border-bottom-left-radius: border-radius();
       }
 
       &:last-child {
-        border-top-right-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
+        border-top-right-radius: border-radius();
+        border-bottom-right-radius: border-radius();
       }
 
       &:not(:last-child) {
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: border-width() solid alpha(color(white), 0.2);
       }
     }
   }
 }
 
-// ANIMATIONS
+// BRAND BUTTONS (DRY - using brand mixins)
+// =============
+.call-action {
+  @include brand-button-hero;
+}
+.nav-link {
+  @include brand-button-nav;
+}
+.appt-btn {
+  @include brand-button-appointment;
+}
+.contact-btn {
+  @include brand-button-contact;
+}
+
+// ANIMATIONS (DRY)
+// ----------
 @keyframes spin {
   to {
     transform: rotate(360deg);
