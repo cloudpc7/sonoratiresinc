@@ -39,12 +39,18 @@ $bg-primary: $color-white;
 $bg-secondary: $color-light;
 $bg-dark: $color-dark;
 
-// TYPOGRAPHY
+// TYPOGRAPHY - Sonora Tires Brand Fonts
 // ----------
-// Font Families
-$font-family-primary: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-secondary: Georgia, "Times New Roman", serif;
+// Font Families (Brand fonts)
+$font-family-primary: "Oxanium", serif; // defaultFont
+$font-family-title: "Orbitron", sans-serif; // titleFont
+$font-family-accent: "Syne", serif; // Used for headings
+$font-family-serif: "Libre Baskerville", serif; // Used for body text
 $font-family-monospace: "Monaco", "Courier New", monospace;
+
+// Legacy font aliases
+$defaultFont: $font-family-primary;
+$titleFont: $font-family-title;
 
 // Font Sizes
 $font-size-xs: 0.75rem; // 12px
