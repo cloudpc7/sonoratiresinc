@@ -1,9 +1,10 @@
 // ==========================================================================
-// FONT AWESOME - Icon font imports
+// FONT AWESOME - Icon fonts integration
 // ==========================================================================
 
-// Import FontAwesome CSS
-// @import "~font-awesome/css/font-awesome.css";
+// FontAwesome will be imported via index.js as CSS to avoid compilation issues
+// The project uses both Font Awesome and @fortawesome/react-fontawesome
 
-// Or use modern FontAwesome if available:
+// Future: When ready to integrate FontAwesome SCSS:
+// @import "~font-awesome/css/font-awesome.css";
 // @import "~@fortawesome/fontawesome-free/css/all.css";
