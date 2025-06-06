@@ -1,1 +1,13 @@
-// Global styles
+// ==========================================================================
+// GLOBAL - Global application styles
+// ==========================================================================
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $bg-primary 0%, $bg-secondary 100%);
+  @include flex-column-center;
+}
+
+.text-muted {
+  color: $color-medium;
+}
