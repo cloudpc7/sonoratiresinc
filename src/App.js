@@ -1,19 +1,11 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import {useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { Container } from 'react-bootstrap';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import './styles/main/main.scss';
+import React from "react";
 
 function App() {
   return (
-        <Routes>
-          <Route path='/' element={<HomePage />}/>
-        </Routes>
+    <div>
+      <h1>Hello World - Sonora Tires App</h1>
+      <p>If you can see this, the React app is working!</p>
+    </div>
   );
 }
 
