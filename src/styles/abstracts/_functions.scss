@@ -1,0 +1,114 @@
+// ==========================================================================
+// FUNCTIONS - Utility functions for calculations
+// ==========================================================================
+
+// UNIT CONVERSION
+// ---------------
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function em($pixels, $context: 16) {
+  @return #{strip-unit($pixels) / strip-unit($context)}em;
+}
+
+@function rem($pixels) {
+  @return #{strip-unit($pixels) / 16}rem;
+}
+
+// COLOR FUNCTIONS
+// ---------------
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// Lighten a color by mixing it with white
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Darken a color by mixing it with black
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// SPACING FUNCTIONS
+// -----------------
+// Get spacing value from map
+$spacing-map: (
+  "xs": $spacing-xs,
+  "sm": $spacing-sm,
+  "md": $spacing-md,
+  "lg": $spacing-lg,
+  "xl": $spacing-xl,
+  "2xl": $spacing-2xl,
+  "3xl": $spacing-3xl,
+  "4xl": $spacing-4xl,
+);
+
+@function spacing($key) {
+  @return map-get($spacing-map, $key);
+}
+
+// BREAKPOINT FUNCTIONS
+// --------------------
+$breakpoints: (
+  "xs": $breakpoint-xs,
+  "sm": $breakpoint-sm,
+  "md": $breakpoint-md,
+  "lg": $breakpoint-lg,
+  "xl": $breakpoint-xl,
+  "xxl": $breakpoint-xxl,
+);
+
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
+// Z-INDEX MANAGEMENT
+// ------------------
+$z-indexes: (
+  "dropdown": $z-dropdown,
+  "sticky": $z-sticky,
+  "fixed": $z-fixed,
+  "modal-backdrop": $z-modal-backdrop,
+  "modal": $z-modal,
+  "popover": $z-popover,
+  "tooltip": $z-tooltip,
+);
+
+@function z($key) {
+  @return map-get($z-indexes, $key);
+}
+
+// MATHEMATICAL FUNCTIONS
+// ----------------------
+@function pow($number, $exponent) {
+  $result: 1;
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $result: $result * $number;
+    }
+  }
+  @return $result;
+}
+
+// GRID FUNCTIONS
+// --------------
+@function grid-width($columns) {
+  @return percentage($columns / $grid-columns);
+}
+
+// Calculate container padding
+@function container-padding($breakpoint) {
+  @if $breakpoint >= $breakpoint-lg {
+    @return $spacing-xl;
+  } @else if $breakpoint >= $breakpoint-md {
+    @return $spacing-lg;
+  } @else {
+    @return $spacing-md;
+  }
+}

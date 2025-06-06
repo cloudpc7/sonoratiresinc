@@ -1,0 +1,114 @@
+// ==========================================================================
+// TYPOGRAPHY - Base typography styles
+// ==========================================================================
+
+// HEADINGS
+// --------
+h1,
+.h1 {
+  @include heading-base;
+  font-size: $font-size-4xl;
+}
+h2,
+.h2 {
+  @include heading-base;
+  font-size: $font-size-3xl;
+}
+h3,
+.h3 {
+  @include heading-base;
+  font-size: $font-size-2xl;
+}
+h4,
+.h4 {
+  @include heading-base;
+  font-size: $font-size-xl;
+}
+h5,
+.h5 {
+  @include heading-base;
+  font-size: $font-size-lg;
+}
+h6,
+.h6 {
+  @include heading-base;
+  font-size: $font-size-base;
+}
+
+// BODY TEXT
+// ---------
+p {
+  margin-bottom: $spacing-md;
+  line-height: $line-height-normal;
+}
+
+// LINKS
+// -----
+a {
+  color: $color-primary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// TEXT UTILITIES
+// --------------
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-truncate {
+  @include text-truncate;
+}
+
+// FONT WEIGHTS
+.fw-light {
+  font-weight: $font-weight-light;
+}
+.fw-normal {
+  font-weight: $font-weight-normal;
+}
+.fw-medium {
+  font-weight: $font-weight-medium;
+}
+.fw-semibold {
+  font-weight: $font-weight-semibold;
+}
+.fw-bold {
+  font-weight: $font-weight-bold;
+}
+
+// FONT SIZES
+.fs-xs {
+  font-size: $font-size-xs;
+}
+.fs-sm {
+  font-size: $font-size-sm;
+}
+.fs-base {
+  font-size: $font-size-base;
+}
+.fs-lg {
+  font-size: $font-size-lg;
+}
+.fs-xl {
+  font-size: $font-size-xl;
+}

@@ -1,0 +1,42 @@
+// ==========================================================================
+// MAIN SCSS FILE - Imports all partials
+// ==========================================================================
+
+// 1. ABSTRACTS
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+// 2. VENDORS (Third-party CSS)
+@import "vendors/bootstrap";
+@import "vendors/fontawesome";
+
+// 3. BASE (Reset, typography, global styles)
+@import "base/reset";
+@import "base/typography";
+@import "base/global";
+
+// 4. LAYOUT (Header, footer, navigation, grid)
+@import "layout/header";
+@import "layout/footer";
+@import "layout/navigation";
+@import "layout/grid";
+
+// 5. COMPONENTS (Buttons, cards, forms, etc.)
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/modals";
+
+// 6. PAGES (Page-specific styles)
+@import "pages/home";
+@import "pages/services";
+@import "pages/contact";
+
+// 7. THEMES (Different color schemes)
+@import "themes/default";
+
+// 8. UTILITIES (Helper classes, utilities)
+@import "utilities/spacing";
+@import "utilities/typography";
+@import "utilities/display";
