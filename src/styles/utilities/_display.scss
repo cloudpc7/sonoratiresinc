@@ -1,1 +1,162 @@
-// Display utility classes
+// ==========================================================================
+// DISPLAY UTILITIES - DRY Generated Classes
+// ==========================================================================
+
+// DISPLAY VALUES (DRY)
+// ---------------
+$display-values: (
+  none,
+  block,
+  inline,
+  inline-block,
+  flex,
+  inline-flex,
+  grid,
+  inline-grid,
+  table,
+  table-cell,
+  table-row
+);
+
+@each $value in $display-values {
+  .d-#{$value} {
+    display: $value !important;
+  }
+}
+
+// FLEXBOX UTILITIES (DRY)
+// -----------------
+.flex-row {
+  flex-direction: row !important;
+}
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse !important;
+}
+.flex-column-reverse {
+  flex-direction: column-reverse !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important;
+}
+
+.justify-start {
+  justify-content: flex-start !important;
+}
+.justify-end {
+  justify-content: flex-end !important;
+}
+.justify-center {
+  justify-content: center !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+.justify-around {
+  justify-content: space-around !important;
+}
+.justify-evenly {
+  justify-content: space-evenly !important;
+}
+
+.align-start {
+  align-items: flex-start !important;
+}
+.align-end {
+  align-items: flex-end !important;
+}
+.align-center {
+  align-items: center !important;
+}
+.align-baseline {
+  align-items: baseline !important;
+}
+.align-stretch {
+  align-items: stretch !important;
+}
+
+// POSITION UTILITIES (DRY)
+// ------------------
+$position-values: (static, relative, absolute, fixed, sticky);
+
+@each $value in $position-values {
+  .position-#{$value} {
+    position: $value !important;
+  }
+}
+
+// OVERFLOW UTILITIES (DRY)
+// ------------------
+$overflow-values: (auto, hidden, visible, scroll);
+
+@each $value in $overflow-values {
+  .overflow-#{$value} {
+    overflow: $value !important;
+  }
+  .overflow-x-#{$value} {
+    overflow-x: $value !important;
+  }
+  .overflow-y-#{$value} {
+    overflow-y: $value !important;
+  }
+}
+
+// Z-INDEX UTILITIES (DRY - Generated from z-index map)
+// -----------------
+$z-index-map: map-get($layout, z-index);
+@each $key, $value in $z-index-map {
+  .z-#{$key} {
+    z-index: $value !important;
+  }
+}
+
+// RESPONSIVE DISPLAY (DRY)
+// -------------------
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != xs {
+    @include respond-above($bp-name) {
+      @each $value in $display-values {
+        .d-#{$bp-name}-#{$value} {
+          display: $value !important;
+        }
+      }
+
+      // Responsive flexbox
+      .flex-#{$bp-name}-row {
+        flex-direction: row !important;
+      }
+      .flex-#{$bp-name}-column {
+        flex-direction: column !important;
+      }
+
+      .justify-#{$bp-name}-start {
+        justify-content: flex-start !important;
+      }
+      .justify-#{$bp-name}-center {
+        justify-content: center !important;
+      }
+      .justify-#{$bp-name}-between {
+        justify-content: space-between !important;
+      }
+
+      .align-#{$bp-name}-start {
+        align-items: flex-start !important;
+      }
+      .align-#{$bp-name}-center {
+        align-items: center !important;
+      }
+      .align-#{$bp-name}-end {
+        align-items: flex-end !important;
+      }
+    }
+  }
+}
