@@ -1,75 +1,75 @@
 // ==========================================================================
-// SPACING UTILITIES - Margin and padding helper classes
+// SPACING UTILITIES - DRY Generated Classes
 // ==========================================================================
 
-// MARGIN UTILITIES
+// MARGIN UTILITIES (DRY - Generated from spacing map)
 // ----------------
-@each $size, $value in $spacing-map {
+@each $key, $value in $spacing {
   // All sides
-  .m-#{$size} {
+  .m-#{$key} {
     margin: $value !important;
   }
 
   // Individual sides
-  .mt-#{$size} {
+  .mt-#{$key} {
     margin-top: $value !important;
   }
-  .mr-#{$size} {
+  .mr-#{$key} {
     margin-right: $value !important;
   }
-  .mb-#{$size} {
+  .mb-#{$key} {
     margin-bottom: $value !important;
   }
-  .ml-#{$size} {
+  .ml-#{$key} {
     margin-left: $value !important;
   }
 
   // Horizontal and vertical
-  .mx-#{$size} {
+  .mx-#{$key} {
     margin-left: $value !important;
     margin-right: $value !important;
   }
-  .my-#{$size} {
+  .my-#{$key} {
     margin-top: $value !important;
     margin-bottom: $value !important;
   }
 }
 
-// PADDING UTILITIES
+// PADDING UTILITIES (DRY - Generated from spacing map)
 // -----------------
-@each $size, $value in $spacing-map {
+@each $key, $value in $spacing {
   // All sides
-  .p-#{$size} {
+  .p-#{$key} {
     padding: $value !important;
   }
 
   // Individual sides
-  .pt-#{$size} {
+  .pt-#{$key} {
     padding-top: $value !important;
   }
-  .pr-#{$size} {
+  .pr-#{$key} {
     padding-right: $value !important;
   }
-  .pb-#{$size} {
+  .pb-#{$key} {
     padding-bottom: $value !important;
   }
-  .pl-#{$size} {
+  .pl-#{$key} {
     padding-left: $value !important;
   }
 
   // Horizontal and vertical
-  .px-#{$size} {
+  .px-#{$key} {
     padding-left: $value !important;
     padding-right: $value !important;
   }
-  .py-#{$size} {
+  .py-#{$key} {
     padding-top: $value !important;
     padding-bottom: $value !important;
   }
 }
 
-// AUTO AND ZERO VALUES
-// ---------------------
+// AUTO VALUES (DRY)
+// ----------
 .m-auto {
   margin: auto !important;
 }
@@ -82,108 +82,38 @@
   margin-bottom: auto !important;
 }
 
-.m-0 {
-  margin: 0 !important;
-}
-.mt-0 {
-  margin-top: 0 !important;
-}
-.mr-0 {
-  margin-right: 0 !important;
-}
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-.ml-0 {
-  margin-left: 0 !important;
-}
-.mx-0 {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-.my-0 {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-.p-0 {
-  padding: 0 !important;
-}
-.pt-0 {
-  padding-top: 0 !important;
-}
-.pr-0 {
-  padding-right: 0 !important;
-}
-.pb-0 {
-  padding-bottom: 0 !important;
-}
-.pl-0 {
-  padding-left: 0 !important;
-}
-.px-0 {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-.py-0 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-// RESPONSIVE SPACING
+// RESPONSIVE SPACING (DRY - Generated for each breakpoint)
 // ------------------
-@include respond-above(sm) {
-  @each $size, $value in $spacing-map {
-    .m-sm-#{$size} {
-      margin: $value !important;
-    }
-    .mx-sm-#{$size} {
-      margin-left: $value !important;
-      margin-right: $value !important;
-    }
-    .my-sm-#{$size} {
-      margin-top: $value !important;
-      margin-bottom: $value !important;
-    }
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != xs {
+    @include respond-above($bp-name) {
+      @each $space-key, $space-value in $spacing {
+        // Margin
+        .m-#{$bp-name}-#{$space-key} {
+          margin: $space-value !important;
+        }
+        .mx-#{$bp-name}-#{$space-key} {
+          margin-left: $space-value !important;
+          margin-right: $space-value !important;
+        }
+        .my-#{$bp-name}-#{$space-key} {
+          margin-top: $space-value !important;
+          margin-bottom: $space-value !important;
+        }
 
-    .p-sm-#{$size} {
-      padding: $value !important;
-    }
-    .px-sm-#{$size} {
-      padding-left: $value !important;
-      padding-right: $value !important;
-    }
-    .py-sm-#{$size} {
-      padding-top: $value !important;
-      padding-bottom: $value !important;
-    }
-  }
-}
-
-@include respond-above(md) {
-  @each $size, $value in $spacing-map {
-    .m-md-#{$size} {
-      margin: $value !important;
-    }
-    .mx-md-#{$size} {
-      margin-left: $value !important;
-      margin-right: $value !important;
-    }
-    .my-md-#{$size} {
-      margin-top: $value !important;
-      margin-bottom: $value !important;
-    }
-
-    .p-md-#{$size} {
-      padding: $value !important;
-    }
-    .px-md-#{$size} {
-      padding-left: $value !important;
-      padding-right: $value !important;
-    }
-    .py-md-#{$size} {
-      padding-top: $value !important;
-      padding-bottom: $value !important;
+        // Padding
+        .p-#{$bp-name}-#{$space-key} {
+          padding: $space-value !important;
+        }
+        .px-#{$bp-name}-#{$space-key} {
+          padding-left: $space-value !important;
+          padding-right: $space-value !important;
+        }
+        .py-#{$bp-name}-#{$space-key} {
+          padding-top: $space-value !important;
+          padding-bottom: $space-value !important;
+        }
+      }
     }
   }
 }
