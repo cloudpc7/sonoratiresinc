@@ -563,3 +563,271 @@ $font-themes: (
 @mixin bg-hamburger {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 16h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 24h24'/%3E%3C/svg%3E");
 }
+
+@mixin bg-appt-image {
+  background-image: url("../../../app/assets/images/nicecar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (min-width: 48rem) {
+    background-position-y: 50%;
+  }
+  @media (min-width: 62rem) {
+    background-position: 65%;
+  }
+  @media (min-width: 90rem) {
+    background-position-y: 45%;
+  }
+}
+
+// ADDITIONAL TYPOGRAPHY MIXINS
+// ----------------------------
+@mixin font-feature-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 2.25rem;
+  @media (min-width: 48rem) {
+    font-size: 2.25rem;
+  }
+  @media (min-width: 62rem) {
+    font-size: 2.8rem;
+    text-align: start;
+  }
+}
+
+@mixin font-feature-welcome {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+@mixin font-feature-name {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-align: start;
+}
+
+@mixin font-service-name {
+  font-family: "Syne", serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  text-align: center;
+  @media (min-width: 36rem) {
+    font-size: 1rem;
+  }
+  @media (min-width: 48rem) {
+    font-size: 1.6rem;
+  }
+}
+
+@mixin font-appt-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  @media (min-width: 36rem) {
+    font-size: 1.75rem;
+  }
+  @media (min-width: 75rem) {
+    font-size: 2.8rem;
+  }
+}
+
+@mixin font-appt-text {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  line-height: 1.6em;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  text-align: center;
+  @media (min-width: 36rem) {
+    font-size: 1rem;
+    text-align: start;
+  }
+}
+
+@mixin font-appt-btn {
+  font-family: "Syne", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@mixin font-about-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  @media (min-width: 62rem) {
+    font-size: 2.8rem;
+  }
+}
+
+@mixin font-about-statement {
+  font-family: "Libre Baskerville";
+  font-weight: 500;
+  line-height: 1.6em;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  text-align: center;
+  @media (min-width: 48rem) {
+    text-align: start;
+  }
+}
+
+@mixin font-learn-link {
+  font-family: "Libre Baskerville";
+  font-weight: 500;
+  line-height: 1.6em;
+  letter-spacing: 0.05em;
+}
+
+@mixin font-contact-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  @media (min-width: 62rem) {
+    font-size: 2.8rem;
+  }
+}
+
+@mixin font-form-label {
+  font-family: "Libre Baskerville";
+}
+
+@mixin font-contact-btn {
+  font-family: "Syne", serif;
+}
+
+@mixin font-social-btn {
+  font-family: "Syne", serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+// ADDITIONAL BUTTON MIXINS
+// ------------------------
+@mixin btn-feature {
+  border: 1px solid colorTheme(app-yellow);
+  color: colorTheme(app-yellow);
+  background-color: transparent;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  border-radius: 0;
+  &:hover {
+    background-color: colorTheme(app-yellow);
+    color: colorTheme(app-white);
+  }
+  @media (min-width: 90rem) {
+    grid-column: 2 / span 2;
+    max-width: 24rem;
+    padding: 1.5rem 4rem;
+  }
+}
+
+@mixin btn-contact {
+  background-color: colorTheme(app-yellow);
+  color: colorTheme(app-white);
+  padding: 1rem 2.25rem;
+  border: none;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  &:hover {
+    background-color: colorTheme(app-black);
+    color: colorTheme(app-yellow);
+  }
+}
+
+@mixin btn-social {
+  border: 1px solid colorTheme(app-yellow);
+  color: colorTheme(app-yellow);
+  padding: 1rem 3rem;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  &:hover {
+    background-color: colorTheme(app-black);
+    color: colorTheme(app-white);
+  }
+  @media (min-width: 48rem) {
+    grid-column: 2;
+  }
+  @media (min-width: 75rem) {
+    padding: 1.5rem 5rem;
+    justify-self: center;
+  }
+}
+
+@mixin btn-quantity {
+  display: flex;
+  border-radius: 0;
+  align-items: center;
+  padding: 1rem;
+  background-color: colorTheme(app-black);
+  border: none;
+  font-size: 1.125rem;
+}
+
+@mixin input-quantity {
+  display: flex;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  max-width: 60px;
+  min-width: 60px;
+  text-align: center;
+}
+
+// ADDITIONAL LAYOUT MIXINS
+// ------------------------
+@mixin display-flex-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 36rem) {
+    flex-direction: row;
+  }
+  @media (min-width: 48rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 90rem) {
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    justify-content: start;
+  }
+}
+
+@mixin display-flex-column-services {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 36rem) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  @media (min-width: 75rem) {
+    align-items: center;
+  }
+  @media (min-width: 90rem) {
+    justify-content: center;
+  }
+}
