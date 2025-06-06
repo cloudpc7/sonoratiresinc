@@ -1,32 +1,13 @@
 // ==========================================================================
-// BOOTSTRAP - Custom Bootstrap configuration
+// BOOTSTRAP - Bootstrap framework integration
 // ==========================================================================
 
-// Import Bootstrap with custom variables
-// Note: Import Bootstrap CSS instead of SCSS for stability
-// You can override Bootstrap variables here if needed
+// For now, we're not importing Bootstrap to avoid compilation issues
+// Bootstrap will be imported via the index.js file as CSS
+// This keeps the compilation stable while we build our custom system
 
-// Custom Bootstrap variable overrides (if using SCSS)
+// Future: When ready to fully integrate Bootstrap SCSS:
+// Override Bootstrap variables with our brand colors
 // $primary: $color-primary;
 // $secondary: $color-secondary;
-// $success: $color-success;
-// $warning: $color-warning;
-// $danger: $color-danger;
-
-// Import the CSS version for stability
-// @import "~bootstrap/dist/css/bootstrap.min.css";
-
-// Or if you want to use SCSS (more advanced):
-// @import "~bootstrap/scss/functions";
-// @import "~bootstrap/scss/variables";
-// @import "~bootstrap/scss/maps";
-// @import "~bootstrap/scss/mixins";
-// @import "~bootstrap/scss/utilities";
-// @import "~bootstrap/scss/root";
-// @import "~bootstrap/scss/reboot";
-// @import "~bootstrap/scss/type";
-// @import "~bootstrap/scss/images";
-// @import "~bootstrap/scss/containers";
-// @import "~bootstrap/scss/grid";
-// @import "~bootstrap/scss/helpers";
-// @import "~bootstrap/scss/utilities/api";
+// Then import Bootstrap SCSS modules selectively
