@@ -1,1 +1,110 @@
-// Typography utility classes
+// ==========================================================================
+// TYPOGRAPHY UTILITIES - DRY Generated Classes
+// ==========================================================================
+
+// FONT FAMILIES (DRY - Generated from font map)
+// --------------
+$font-families: map-get($fonts, families);
+@each $key, $family in $font-families {
+  .font-#{$key} {
+    font-family: $family !important;
+  }
+}
+
+// FONT SIZES (DRY - Generated from font sizes map)
+// -----------
+$font-sizes-map: map-get($fonts, sizes);
+@each $key, $size in $font-sizes-map {
+  .fs-#{$key} {
+    font-size: $size !important;
+  }
+}
+
+// FONT WEIGHTS (DRY - Generated from weights map)
+// ------------
+$font-weights-map: map-get($fonts, weights);
+@each $key, $weight in $font-weights-map {
+  .fw-#{$key} {
+    font-weight: $weight !important;
+  }
+}
+
+// LINE HEIGHTS (DRY - Generated from line-heights map)
+// ------------
+$line-heights-map: map-get($fonts, line-heights);
+@each $key, $height in $line-heights-map {
+  .lh-#{$key} {
+    line-height: $height !important;
+  }
+}
+
+// LETTER SPACING (DRY - Generated from letter-spacing map)
+// ---------------
+$letter-spacing-map: map-get($fonts, letter-spacing);
+@each $key, $spacing in $letter-spacing-map {
+  .ls-#{$key} {
+    letter-spacing: $spacing !important;
+  }
+}
+
+// TEXT UTILITIES (Static but organized)
+// --------------
+.text-center {
+  text-align: center !important;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-truncate {
+  @include text-truncate;
+}
+
+// TEXT COLORS (DRY - Generated from colors map)
+// -----------
+@each $key, $color-value in $colors {
+  .text-#{$key} {
+    color: $color-value !important;
+  }
+}
+
+// RESPONSIVE TYPOGRAPHY (DRY)
+// ---------------------
+@each $bp-name, $bp-value in $breakpoints {
+  @if $bp-name != xs {
+    @include respond-above($bp-name) {
+      .text-#{$bp-name}-center {
+        text-align: center !important;
+      }
+      .text-#{$bp-name}-left {
+        text-align: left !important;
+      }
+      .text-#{$bp-name}-right {
+        text-align: right !important;
+      }
+
+      // Responsive font sizes
+      @each $size-key, $size-value in $font-sizes-map {
+        .fs-#{$bp-name}-#{$size-key} {
+          font-size: $size-value !important;
+        }
+      }
+    }
+  }
+}
