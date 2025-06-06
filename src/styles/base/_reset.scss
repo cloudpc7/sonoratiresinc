@@ -32,11 +32,11 @@ ol {
 // Set core body defaults
 body {
   min-height: 100vh;
-  line-height: $line-height-normal;
-  font-family: $font-family-primary;
-  font-size: $font-size-base;
-  color: $color-dark;
-  background-color: $bg-primary;
+  line-height: line-height(normal);
+  font-family: font-family(primary);
+  font-size: font-size(base);
+  color: color(dark);
+  background-color: color(white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
