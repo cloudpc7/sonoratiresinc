@@ -2,16 +2,16 @@
 // VARIABLES - Design Tokens
 // ==========================================================================
 
-// COLORS
+// COLORS - Brand Colors from Sonora Tires
 // -------
-// Primary Brand Colors
-$color-primary: #007bff;
-$color-primary-light: lighten($color-primary, 20%);
-$color-primary-dark: darken($color-primary, 20%);
+// Primary Brand Colors (Sonora Tires Brand)
+$color-primary: #daa520; // Goldenrod (app-yellow)
+$color-primary-light: #f4e09c; // Lighter goldenrod
+$color-primary-dark: #b8860b; // Darker goldenrod
 
 $color-secondary: #6c757d;
-$color-secondary-light: lighten($color-secondary, 20%);
-$color-secondary-dark: darken($color-secondary, 20%);
+$color-secondary-light: #a8b2bb;
+$color-secondary-dark: #495057;
 
 // Semantic Colors
 $color-success: #28a745;
@@ -19,12 +19,20 @@ $color-warning: #ffc107;
 $color-danger: #dc3545;
 $color-info: #17a2b8;
 
-// Neutral Colors
-$color-white: #ffffff;
-$color-light: #f8f9fa;
+// Brand Neutral Colors (Sonora Tires)
+$color-white: #ffffff; // app-white
+$color-light: #f5f5f5; // app-grey
 $color-medium: #6c757d;
-$color-dark: #343a40;
-$color-black: #000000;
+$color-dark: #333333; // app-dark-grey
+$color-black: #000000; // app-black
+
+// Brand Color Aliases (for backward compatibility)
+$app-white: $color-white;
+$app-grey: $color-light;
+$app-yellow: $color-primary;
+$goldenrod: $color-primary;
+$app-black: $color-black;
+$app-dark-grey: $color-dark;
 
 // Background Colors
 $bg-primary: $color-white;
