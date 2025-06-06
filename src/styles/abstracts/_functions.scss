@@ -84,6 +84,36 @@ $z-indexes: (
   @return map-get($z-indexes, $key);
 }
 
+// BRAND COLOR FUNCTION (from existing system)
+// -------------------
+$color-theme: (
+  app-white: $app-white,
+  app-grey: $app-grey,
+  app-yellow: $app-yellow,
+  goldenrod: $goldenrod,
+  app-black: $app-black,
+  app-dark-grey: $app-dark-grey,
+);
+
+@function colorTheme($key) {
+  @return map-get($color-theme, $key);
+}
+
+// RESPONSIVE FONT FUNCTIONS (from existing system)
+// -------------------------
+@function get-font-size($element, $breakpoint: "xs") {
+  $size-map: map-get($font-sizes, $element);
+  @return map-get($size-map, $breakpoint);
+}
+
+@function get-letter-spacing($element) {
+  @return map-get($letter-spacing, $element);
+}
+
+@function get-line-height($element) {
+  @return map-get($line-heights, $element);
+}
+
 // MATHEMATICAL FUNCTIONS
 // ----------------------
 @function pow($number, $exponent) {
