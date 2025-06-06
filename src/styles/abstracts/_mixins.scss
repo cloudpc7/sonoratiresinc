@@ -266,3 +266,300 @@
     clear: both;
   }
 }
+
+// EXISTING SONORA TIRES MIXINS
+// ============================
+
+// GUTTER MIXINS (from existing utils)
+// ----------------
+@mixin gutter-reset {
+  margin: 0;
+  padding: 0;
+}
+
+// WIDTH MIXINS
+// ------------
+@mixin width-full {
+  width: 100%;
+  max-width: 100%;
+}
+
+@mixin width-body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+// LAYOUT DISPLAY MIXINS
+// ---------------------
+@mixin display-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin display-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin display-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin display-flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin display-flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin display-flex-column-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  @media (min-width: 62rem) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+// GRID LAYOUT MIXINS
+// ------------------
+@mixin display-grid-hero {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 48rem) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+}
+
+@mixin display-grid-features {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 48rem) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+  }
+}
+
+@mixin display-grid-appt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 48rem) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+  }
+}
+
+@mixin display-grid-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 48rem) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+  }
+}
+
+@mixin display-grid-contact {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 62rem) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@mixin display-grid-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 36rem) {
+    flex-direction: row;
+  }
+  @media (min-width: 48rem) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 75rem) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// RESPONSIVE TYPOGRAPHY MIXIN
+// ---------------------------
+@mixin responsive-font-size($element) {
+  font-size: get-font-size($element);
+  letter-spacing: get-letter-spacing($element);
+  line-height: get-line-height($element);
+
+  @each $breakpoint,
+    $size in (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px)
+  {
+    @media (min-width: $size) {
+      font-size: get-font-size($element, $breakpoint);
+    }
+  }
+}
+
+// FONT THEME MIXIN
+// ----------------
+$font-themes: (
+  default: (
+    font-family: $defaultFont,
+    text-align: left,
+  ),
+  title: (
+    font-family: $titleFont,
+    text-align: left,
+  ),
+);
+
+@mixin font-theme($theme-name) {
+  $theme: map-get($font-themes, $theme-name);
+  @if $theme {
+    font-family: map-get($theme, font-family);
+    text-align: map-get($theme, text-align);
+
+    @media (min-width: 23rem) and (max-width: 61.5rem) {
+      text-align: center;
+    }
+
+    @media (min-width: 62rem) {
+      text-align: left;
+    }
+  } @else {
+    @error "No font theme found for `#{$theme-name}`";
+  }
+}
+
+// BRAND SPECIFIC TYPOGRAPHY MIXINS
+// --------------------------------
+@mixin font-center {
+  text-align: center;
+}
+
+@mixin font-welcome {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 3rem;
+  text-align: center;
+  @media (min-width: 36rem) {
+    font-size: 3rem;
+  }
+  @media (min-width: 62rem) {
+    font-size: 3.25rem;
+  }
+  @media (min-width: 75rem) {
+    font-size: 4rem;
+  }
+}
+
+@mixin font-call-action-text {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  line-height: 1.3em;
+  letter-spacing: 0.12em;
+  font-size: 1.25rem;
+  @media (min-width: 62rem) {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin font-header-title {
+  font-family: "Syne", serif;
+  font-weight: 700;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 1em;
+  @media (min-width: 48rem) {
+    font-size: 1.6rem;
+  }
+}
+
+// COLOR MIXINS
+// ------------
+@mixin color-white {
+  color: colorTheme(app-white);
+}
+
+@mixin color-red {
+  color: colorTheme(app-dark-grey);
+}
+
+@mixin color-yellow {
+  color: colorTheme(app-yellow);
+}
+
+// BRAND BUTTON MIXINS
+// -------------------
+@mixin btn-hero {
+  border: 1px solid colorTheme(app-yellow);
+  color: colorTheme(app-yellow);
+  background-color: transparent;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 0;
+  &:hover {
+    background-color: colorTheme(app-yellow);
+    color: colorTheme(app-white);
+  }
+}
+
+@mixin btn-nav-link {
+  border: 1px solid colorTheme(app-yellow);
+  padding: 0.5em;
+  text-align: center;
+  &:hover {
+    background-color: colorTheme(app-yellow);
+    color: colorTheme(app-white);
+  }
+}
+
+@mixin btn-appt {
+  border: 1px solid colorTheme(app-yellow);
+  color: colorTheme(app-yellow);
+  background-color: transparent;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  border-radius: 0;
+  &:hover {
+    background-color: colorTheme(app-yellow);
+    color: colorTheme(app-white);
+  }
+  @media (min-width: 62rem) {
+    padding: 1rem 1.3rem;
+    min-width: 12.25rem;
+  }
+}
+
+// BACKGROUND MIXINS
+// -----------------
+@mixin bg-hero-image {
+  background-image: url("../../app/assets/images/hero-image.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+@mixin bg-hamburger {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 16h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 24h24'/%3E%3C/svg%3E");
+}
