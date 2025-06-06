@@ -1,22 +1,22 @@
 // ==========================================================================
-// HEADER LAYOUT - Navigation and site header
+// HEADER LAYOUT - DRY & Optimized
 // ==========================================================================
 
 .header-container {
-  @media (min-width: 62rem) {
+  @include respond-above(desktop) {
     justify-content: space-between;
   }
 
   .nav-row {
-    @include display-flex-space-between;
-    padding: 1rem;
+    @include flex-between;
+    padding: spacing(md);
 
     .cart-col {
       flex: 0 0 75px;
-      @include display-flex-center;
+      @include flex-center;
+
       .fa-cart-shopping {
-        width: 25px;
-        height: 25px;
+        @include size(25px);
       }
     }
   }
@@ -24,54 +24,59 @@
   .nav-col {
     flex: 0;
     justify-self: end;
+
     .navbar-toggler {
       border: none;
       flex: 0 0 50px;
-      @include bg-hamburger;
+      @include brand-bg-hamburger;
       padding: 0 0.5em;
     }
   }
 
   .header-title {
-    @include font-header-title;
-    @include color-yellow;
+    @include brand-font-header-title;
+    color: color(primary);
     text-decoration: none;
   }
 }
 
 .offcanvas {
   box-sizing: border-box;
-  @include display-flex-start;
+  @include flex(row, flex-start);
 
   .offcanvas-header {
-    @include display-flex-space-between;
-    gap: 1rem;
-    padding: 1rem;
+    @include flex-between;
+    gap: spacing(md);
+    padding: spacing(md);
 
     .nav-title {
-      @include font-header-title;
-      @include color-yellow;
+      @include brand-font-header-title;
+      color: color(primary);
       text-decoration: none;
     }
   }
 
   .offcanvas-body {
-    padding: 1rem;
+    padding: spacing(md);
 
     .navbar {
-      @include display-flex-column-nav;
-      gap: 1rem;
+      @include flex-column;
+      gap: spacing(md);
+
+      @include respond-above(desktop) {
+        @include flex(row, flex-start, center);
+      }
 
       .nav-link {
-        @include btn-nav-link;
+        @include brand-button-nav;
+
         .fa-2x {
-          width: 25px;
-          height: 25px;
+          @include size(25px);
         }
       }
 
       .appt-btn {
-        @include btn-appt;
+        @include brand-button-appointment;
         min-width: 12rem;
       }
     }
