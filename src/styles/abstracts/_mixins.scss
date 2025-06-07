@@ -290,7 +290,7 @@
 
 @mixin brand-button-hero {
   @include brand-button-base;
-  padding: spacing(md) spacing(3xl);
+  padding: 1rem 3rem;
 }
 
 @mixin brand-button-nav {
@@ -300,10 +300,10 @@
 
 @mixin brand-button-appointment {
   @include brand-button-base;
-  padding: spacing(md) spacing(3xl);
+  padding: 1rem 3rem;
 
   @include respond-above(desktop) {
-    padding: spacing(md) 1.3rem;
+    padding: 1rem 1.3rem;
     min-width: 12.25rem;
   }
 }
