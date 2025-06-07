@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXTwitter,
@@ -23,7 +24,17 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab);
+// Add all icon libraries to ensure they display
+library.add(
+  fab,
+  fas,
+  faShoppingCart,
+  faPhone,
+  faLocationDot,
+  faXTwitter,
+  faFacebook,
+  faInstagram,
+);
 
 const Header = ({ toggleForm, handleClose, handleShow, showNav }) => {
   return (
