@@ -46,16 +46,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>,
 );
-
-/**
- * 🎉 Sonora Tires Advanced SCSS Architecture Initialized!
- *
- * The application now uses:
- * ✅ Design token system for consistent styling
- * ✅ DRY mixins and functions
- * ✅ Generated utility classes
- * ✅ Responsive breakpoint system
- * ✅ Component-based architecture
- * ✅ All existing brand styling preserved
- * ✅ Enterprise-grade maintainability
- */
