@@ -1,0 +1,202 @@
+// ==========================================================================
+// FUNCTIONS - DRY utility functions for accessing design tokens
+// ==========================================================================
+
+// COLOR FUNCTIONS (DRY & Type-safe)
+// ---------------
+@function color($key) {
+  @if not map-has-key($colors, $key) {
+    @error "Color `#{$key}` not found in $colors map. Available colors: #{map-keys($colors)}";
+  }
+  @return map-get($colors, $key);
+}
+
+// Legacy support (backward compatibility)
+@function colorTheme($key) {
+  @return color($key);
+}
+
+// TYPOGRAPHY FUNCTIONS (DRY)
+// --------------------
+@function font-family($key) {
+  $families: map-get($fonts, families);
+  @if not map-has-key($families, $key) {
+    @error "Font family `#{$key}` not found. Available: #{map-keys($families)}";
+  }
+  @return map-get($families, $key);
+}
+
+@function font-size($key) {
+  $sizes: map-get($fonts, sizes);
+  @if not map-has-key($sizes, $key) {
+    @error "Font size `#{$key}` not found. Available: #{map-keys($sizes)}";
+  }
+  @return map-get($sizes, $key);
+}
+
+@function font-weight($key) {
+  $weights: map-get($fonts, weights);
+  @return map-get($weights, $key);
+}
+
+@function line-height($key) {
+  $line-heights: map-get($fonts, line-heights);
+  @return map-get($line-heights, $key);
+}
+
+@function letter-spacing($key) {
+  $letter-spacings: map-get($fonts, letter-spacing);
+  @return map-get($letter-spacings, $key);
+}
+
+// Responsive font functions (DRY)
+@function responsive-font-size($element, $breakpoint: xs) {
+  $responsive: map-get($fonts, responsive);
+  $element-sizes: map-get($responsive, $element);
+  @if not $element-sizes {
+    @error "Responsive font size for `#{$element}` not found";
+  }
+  @return map-get($element-sizes, $breakpoint);
+}
+
+// Legacy support
+@function get-font-size($element, $breakpoint: xs) {
+  @return responsive-font-size($element, $breakpoint);
+}
+
+@function get-letter-spacing($element) {
+  @return letter-spacing($element);
+}
+
+@function get-line-height($element) {
+  @return line-height($element);
+}
+
+// SPACING FUNCTIONS (DRY)
+// -----------------
+@function spacing($key) {
+  @if not map-has-key($spacing, $key) {
+    @error "Spacing `#{$key}` not found. Available: #{map-keys($spacing)}";
+  }
+  @return map-get($spacing, $key);
+}
+
+// BREAKPOINT FUNCTIONS (DRY)
+// --------------------
+@function breakpoint($key) {
+  @if map-has-key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  }
+  @if map-has-key($brand-breakpoints, $key) {
+    @return map-get($brand-breakpoints, $key);
+  }
+  @error "Breakpoint `#{$key}` not found. Available: #{map-keys($breakpoints)}, #{map-keys($brand-breakpoints)}";
+}
+
+// LAYOUT FUNCTIONS (DRY)
+// ----------------
+@function z-index($key) {
+  $z-indexes: map-get($layout, z-index);
+  @return map-get($z-indexes, $key);
+}
+
+// Legacy support
+@function z($key) {
+  @return z-index($key);
+}
+
+// BORDER FUNCTIONS (DRY)
+// ----------------
+@function border-radius($key: base) {
+  $radii: map-get($borders, radius);
+  @return map-get($radii, $key);
+}
+
+@function border-width() {
+  @return map-get($borders, width);
+}
+
+// SHADOW FUNCTIONS (DRY)
+// ----------------
+@function shadow($key: base) {
+  @if not map-has-key($shadows, $key) {
+    @error "Shadow `#{$key}` not found. Available: #{map-keys($shadows)}";
+  }
+  @return map-get($shadows, $key);
+}
+
+// TRANSITION FUNCTIONS (DRY)
+// ---------------------
+@function transition($key: normal) {
+  @if not map-has-key($transitions, $key) {
+    @error "Transition `#{$key}` not found. Available: #{map-keys($transitions)}";
+  }
+  @return map-get($transitions, $key);
+}
+
+// COMPONENT FUNCTIONS (DRY)
+// -------------------
+@function component($component, $property, $variant: base) {
+  $comp: map-get($components, $component);
+  @if not $comp {
+    @error "Component `#{$component}` not found in $components";
+  }
+
+  $prop: map-get($comp, $property);
+  @if not $prop {
+    @error "Property `#{$property}` not found for component `#{$component}`";
+  }
+
+  @if type-of($prop) == "map" {
+    @return map-get($prop, $variant);
+  }
+  @return $prop;
+}
+
+// UTILITY FUNCTIONS (Mathematical & Conversion)
+// -------------------------
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function em($pixels, $context: 16) {
+  @return #{strip-unit($pixels) / strip-unit($context)}em;
+}
+
+@function rem($pixels) {
+  @return #{strip-unit($pixels) / 16}rem;
+}
+
+// Color manipulation (DRY)
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// GRID FUNCTIONS (DRY)
+// --------------
+@function grid-width($columns) {
+  $total-columns: map-get($layout, grid-columns);
+  @return percentage($columns / $total-columns);
+}
+
+@function container-padding($breakpoint-key) {
+  $bp: breakpoint($breakpoint-key);
+  @if $bp >= breakpoint(lg) {
+    @return spacing(xl);
+  } @else if $bp >= breakpoint(md) {
+    @return spacing(lg);
+  } @else {
+    @return spacing(md);
+  }
+}

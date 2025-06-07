@@ -1,0 +1,347 @@
+// ==========================================================================
+// VARIABLES - Design System Tokens (DRY & Optimized)
+// ==========================================================================
+
+// BREAKPOINTS (Single source of truth)
+// -----------
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+// Custom breakpoints for brand-specific layouts
+$brand-breakpoints: (
+  mobile-center: 23rem,
+  // 368px - Mobile text centering
+  mobile-center-end: 61.5rem,
+  // 984px - End mobile centering
+  tablet: 36rem,
+  // 576px
+  desktop-small: 48rem,
+  // 768px
+  desktop: 62rem,
+  // 992px
+  desktop-large: 75rem,
+  // 1200px
+  desktop-xl: 90rem, // 1440px
+) !default;
+
+// COLORS (Organized by purpose, DRY)
+// ------
+$colors: (
+  // Brand Primary
+  primary: #daa520,
+  primary-light: #f4e09c,
+  primary-dark: #b8860b,
+
+  // Brand Secondary
+  secondary: #6c757d,
+  secondary-light: #a8b2bb,
+  secondary-dark: #495057,
+
+  // Semantic
+  success: #28a745,
+  warning: #ffc107,
+  danger: #dc3545,
+  info: #17a2b8,
+
+  // Neutrals
+  white: #ffffff,
+  light: #f5f5f5,
+  medium: #6c757d,
+  dark: #333333,
+  black: #000000,
+
+  // Legacy aliases (backward compatibility)
+  app-white: #ffffff,
+  app-grey: #f5f5f5,
+  app-yellow: #daa520,
+  goldenrod: #daa520,
+  app-black: #000000,
+  app-dark-grey: #333333
+) !default;
+
+// TYPOGRAPHY (Organized and DRY)
+// ----------
+$fonts: (
+  // Font stacks
+  families: (
+      primary: (
+        "Oxanium",
+        serif,
+      ),
+      title: (
+        "Orbitron",
+        sans-serif,
+      ),
+      accent: (
+        "Syne",
+        serif,
+      ),
+      serif: (
+        "Libre Baskerville",
+        serif,
+      ),
+      monospace: (
+        "Monaco",
+        "Courier New",
+        monospace,
+      ),
+    ),
+
+  // Base sizes
+  sizes: (
+      xs: 0.75rem,
+      // 12px
+      sm: 0.875rem,
+      // 14px
+      base: 1rem,
+      // 16px
+      lg: 1.125rem,
+      // 18px
+      xl: 1.25rem,
+      // 20px
+      "2xl": 1.5rem,
+      // 24px
+      "3xl": 1.875rem,
+      // 30px
+      "4xl": 2.25rem,
+      // 36px
+      "5xl": 3rem, // 48px
+    ),
+
+  // Responsive sizes (DRY - single source)
+  responsive: (
+      h1: (
+        xs: 2.5rem,
+        sm: 3rem,
+        md: 3.5rem,
+        lg: 4rem,
+        xl: 4.5rem,
+      ),
+      h2: (
+        xs: 2rem,
+        sm: 2.5rem,
+        md: 3rem,
+        lg: 3.5rem,
+        xl: 4rem,
+      ),
+      h3: (
+        xs: 1.75rem,
+        sm: 2rem,
+        md: 2.25rem,
+        lg: 2.5rem,
+        xl: 2.75rem,
+      ),
+      h4: (
+        xs: 1.5rem,
+        sm: 1.75rem,
+        md: 2rem,
+        lg: 2.25rem,
+        xl: 2.5rem,
+      ),
+      h5: (
+        xs: 1rem,
+        sm: 1.125rem,
+        md: 1.25rem,
+        lg: 1.5rem,
+        xl: 1.75rem,
+      ),
+      h6: (
+        xs: 1rem,
+        sm: 1.125rem,
+        md: 1.25rem,
+        lg: 1.5rem,
+        xl: 1.75rem,
+      ),
+      p: (
+        xs: 1rem,
+        sm: 1.125rem,
+        md: 1.25rem,
+        lg: 1.375rem,
+        xl: 1.5rem,
+      ),
+      small: (
+        xs: 0.875rem,
+        sm: 0.9375rem,
+        md: 1rem,
+        lg: 1.0625rem,
+        xl: 1.125rem,
+      ),
+      button: (
+        xs: 1rem,
+        sm: 1.125rem,
+        md: 1.25rem,
+        lg: 1.375rem,
+        xl: 1.5rem,
+      ),
+    ),
+
+  // Typography properties
+  weights: (
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+    ),
+
+  line-heights: (
+    tight: 1.25,
+    normal: 1.5,
+    relaxed: 1.75,
+    // Element-specific
+    h1: 1.2,
+    h2: 1.3,
+    h3: 1.4,
+    h4: 1.5,
+    h5: 1.6,
+    h6: 1.6,
+    p: 1.6,
+    small: 1.5,
+    button: 1.4,
+  ),
+
+  letter-spacing: (
+    tight: -0.025em,
+    normal: 0,
+    wide: 0.025em,
+    wider: 0.05em,
+    widest: 0.1em,
+    // Element-specific
+    h1: 0.02em,
+    h2: 0.015em,
+    h3: 0.01em,
+    h4: 0.005em,
+    h5: 0,
+    h6: 0,
+    p: 0.01em,
+    small: 0,
+    button: 0.03em,
+  )
+) !default;
+
+// SPACING (Systematic scale)
+// --------
+$spacing: (
+  0: 0,
+  xs: 0.25rem,
+  // 4px
+  sm: 0.5rem,
+  // 8px
+  md: 1rem,
+  // 16px
+  lg: 1.5rem,
+  // 24px
+  xl: 2rem,
+  // 32px
+  "2xl": 3rem,
+  // 48px
+  "3xl": 4rem,
+  // 64px
+  "4xl": 6rem,
+  // 96px
+  "5xl": 8rem, // 128px
+) !default;
+
+// LAYOUT (Grid and container)
+// ------
+$layout: (
+  container-max-width: 1200px,
+  grid-columns: 12,
+  grid-gutter: map-get($spacing, lg),
+  // Z-index scale
+  z-index: (
+      dropdown: 1000,
+      sticky: 1020,
+      fixed: 1030,
+      modal-backdrop: 1040,
+      modal: 1050,
+      popover: 1060,
+      tooltip: 1070,
+    ),
+) !default;
+
+// BORDERS & RADIUS
+// ---------------
+$borders: (
+  width: 1px,
+  radius: (
+    none: 0,
+    sm: 0.25rem,
+    base: 0.375rem,
+    lg: 0.5rem,
+    xl: 0.75rem,
+    full: 50%,
+  ),
+) !default;
+
+// SHADOWS (Systematic elevation)
+// -------
+$shadows: (
+  none: none,
+  sm: (
+    0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  ),
+  base: (
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06),
+  ),
+  md: (
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+  ),
+  lg: (
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+  ),
+  xl: (
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+  ),
+) !default;
+
+// TRANSITIONS (Consistent timing)
+// -----------
+$transitions: (
+  fast: 150ms ease-in-out,
+  normal: 300ms ease-in-out,
+  slow: 500ms ease-in-out,
+) !default;
+
+// COMPONENT TOKENS (DRY component configuration)
+// ---------------
+$components: (
+  buttons: (
+    padding: (
+      sm: (
+        map-get($spacing, xs) map-get($spacing, sm),
+      ),
+      base: (
+        map-get($spacing, sm) map-get($spacing, md),
+      ),
+      lg: (
+        map-get($spacing, md) map-get($spacing, lg),
+      ),
+    ),
+    border-radius: map-get($borders, radius, base),
+  ),
+
+  cards: (
+    padding: map-get($spacing, lg),
+    border-radius: map-get($borders, radius, lg),
+    shadow: map-get($shadows, base),
+  ),
+
+  forms: (
+    input-padding: (
+      map-get($spacing, sm) map-get($spacing, md),
+    ),
+    border-radius: map-get($borders, radius, base),
+    border-width: map-get($borders, width),
+  ),
+) !default;

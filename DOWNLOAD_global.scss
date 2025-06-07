@@ -1,0 +1,13 @@
+// ==========================================================================
+// GLOBAL - Global application styles (DRY)
+// ==========================================================================
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, color(white) 0%, color(light) 100%);
+  @include flex-column-center;
+}
+
+.text-muted {
+  color: color(medium);
+}
