@@ -86,7 +86,7 @@ a {
   }
 }
 
-// TEXT UTILITIES
+// TEXT UTILITIES (DRY)
 // --------------
 .text-center {
   text-align: center;
@@ -112,36 +112,36 @@ a {
   @include text-truncate;
 }
 
-// FONT WEIGHTS
+// FONT WEIGHTS (DRY)
 .fw-light {
-  font-weight: $font-weight-light;
+  font-weight: font-weight(light);
 }
 .fw-normal {
-  font-weight: $font-weight-normal;
+  font-weight: font-weight(normal);
 }
 .fw-medium {
-  font-weight: $font-weight-medium;
+  font-weight: font-weight(medium);
 }
 .fw-semibold {
-  font-weight: $font-weight-semibold;
+  font-weight: font-weight(semibold);
 }
 .fw-bold {
-  font-weight: $font-weight-bold;
+  font-weight: font-weight(bold);
 }
 
-// FONT SIZES
+// FONT SIZES (DRY)
 .fs-xs {
-  font-size: $font-size-xs;
+  font-size: font-size(xs);
 }
 .fs-sm {
-  font-size: $font-size-sm;
+  font-size: font-size(sm);
 }
 .fs-base {
-  font-size: $font-size-base;
+  font-size: font-size(base);
 }
 .fs-lg {
-  font-size: $font-size-lg;
+  font-size: font-size(lg);
 }
 .fs-xl {
-  font-size: $font-size-xl;
+  font-size: font-size(xl);
 }
