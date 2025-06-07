@@ -6,37 +6,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
-// HEADINGS
+// HEADINGS (DRY - using functions)
 // --------
 h1,
 .h1 {
-  @include heading-base;
-  font-size: $font-size-4xl;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(5xl);
 }
+
 h2,
 .h2 {
-  @include heading-base;
-  font-size: $font-size-3xl;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(4xl);
 }
+
 h3,
 .h3 {
-  @include heading-base;
-  font-size: $font-size-2xl;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(3xl);
 }
+
 h4,
 .h4 {
-  @include heading-base;
-  font-size: $font-size-xl;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(2xl);
 }
+
 h5,
 .h5 {
-  @include heading-base;
-  font-size: $font-size-lg;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(xl);
 }
+
 h6,
 .h6 {
-  @include heading-base;
-  font-size: $font-size-base;
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: line-height(tight);
+  margin-bottom: spacing(md);
+  color: color(dark);
+  font-size: font-size(base);
 }
 
 // BODY TEXT
