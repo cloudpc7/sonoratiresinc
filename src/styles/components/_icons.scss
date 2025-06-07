@@ -1,0 +1,78 @@
+// ==========================================================================
+// ICONS - FontAwesome icon fixes and styling
+// ==========================================================================
+
+// Ensure FontAwesome icons display properly
+.fa,
+.fas,
+.fab,
+.fal,
+.far {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+// FontAwesome sizing fixes
+.fa-2x {
+  font-size: 2em !important;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+// Shopping cart icon styling
+.fa-cart-shopping,
+.fa-shopping-cart {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+// Header icon colors
+.header-container {
+  .cart-col svg {
+    color: color(primary) !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+// Navigation icon colors
+.offcanvas {
+  .navbar {
+    .nav-link svg {
+      color: color(primary) !important;
+      width: 25px !important;
+      height: 25px !important;
+
+      &:hover {
+        color: color(white) !important;
+      }
+    }
+  }
+
+  .offcanvas-header svg {
+    color: color(primary) !important;
+  }
+}
+
+// Ensure all FontAwesome SVGs have proper styling
+svg[data-icon] {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
+// Force icon visibility
+.fa-shopping-cart,
+.fa-phone,
+.fa-location-dot,
+.fa-facebook,
+.fa-instagram,
+.fa-x-twitter {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
