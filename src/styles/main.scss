@@ -51,10 +51,22 @@
 @import "components/forms"; // Form elements
 @import "components/modals"; // Modal dialogs
 
-// 6. PAGES - Page-specific styles (unique page layouts)
-@import "pages/home"; // Homepage styles
-@import "pages/services"; // Services page
-@import "pages/contact"; // Contact page
+// 6. PAGES (Page-specific styles)
+@import "pages/home";
+@import "pages/services";
+@import "pages/contact";
+
+// 9. EXISTING STYLES (Import your existing styles to maintain compatibility)
+@import "homepage/homepage";
+@import "header/header";
+@import "footer/footer";
+@import "features/features";
+@import "services/service";
+@import "contact/contact";
+@import "about/about";
+@import "social/social";
+@import "tireform/tireform";
+@import "modal/successmodal";
 
 // 7. THEMES - Visual themes (color schemes and variants)
 @import "themes/default"; // Default Sonora Tires theme
