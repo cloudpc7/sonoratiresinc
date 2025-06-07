@@ -1,0 +1,33 @@
+// ==========================================================================
+// COMPATIBILITY LAYER - Ensures existing styles work with new architecture
+// ==========================================================================
+
+// This file ensures your existing components work properly with the new SCSS system
+// It imports all your existing stylesheets while maintaining the new architecture
+
+// Import existing page styles
+@import "homepage/homepage";
+@import "header/header";
+@import "footer/footer";
+
+// Import existing component styles
+@import "features/features";
+@import "services/service";
+@import "contact/contact";
+@import "about/about";
+@import "social/social";
+
+// Import existing feature styles
+@import "tireform/tireform";
+@import "modal/successmodal";
+
+// Import existing utility styles
+@import "variables/colors";
+@import "variables/fonts";
+@import "variables/utils";
+
+// Import existing service form styles
+@import "services/serviceform/serviceform";
+
+// Import existing appointments styles
+@import "features/appointments/appointment";

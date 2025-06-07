@@ -22,6 +22,7 @@
 // 6. Pages - Page-specific styles
 // 7. Themes - Color schemes
 // 8. Utilities - Helper classes
+// 9. Compatibility - Existing styles integration
 //
 // ==========================================================================
 
@@ -51,22 +52,10 @@
 @import "components/forms"; // Form elements
 @import "components/modals"; // Modal dialogs
 
-// 6. PAGES (Page-specific styles)
-@import "pages/home";
-@import "pages/services";
-@import "pages/contact";
-
-// 9. EXISTING STYLES (Import your existing styles to maintain compatibility)
-@import "homepage/homepage";
-@import "header/header";
-@import "footer/footer";
-@import "features/features";
-@import "services/service";
-@import "contact/contact";
-@import "about/about";
-@import "social/social";
-@import "tireform/tireform";
-@import "modal/successmodal";
+// 6. PAGES - Page-specific styles (unique page layouts)
+@import "pages/home"; // Homepage styles
+@import "pages/services"; // Services page
+@import "pages/contact"; // Contact page
 
 // 7. THEMES - Visual themes (color schemes and variants)
 @import "themes/default"; // Default Sonora Tires theme
@@ -75,6 +64,9 @@
 @import "utilities/spacing"; // Margin and padding utilities
 @import "utilities/typography"; // Text styling utilities
 @import "utilities/display"; // Display and flexbox utilities
+
+// 9. COMPATIBILITY LAYER - Ensures existing styles work with new architecture
+@import "compatibility";
 
 // ==========================================================================
 // 🎉 SONORA TIRES ADVANCED SCSS ARCHITECTURE COMPLETE!
@@ -87,6 +79,7 @@
 // ✅ Generated utility classes
 // ✅ Responsive design system
 // ✅ Enterprise-grade maintainability
+// ✅ Full compatibility with existing components
 //
 // All existing Sonora Tires styling has been preserved and enhanced!
 // ==========================================================================
