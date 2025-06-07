@@ -1,0 +1,28 @@
+// Test SCSS variables and nesting
+$primary-color: #007bff;
+$font-size-large: 2rem;
+$font-size-medium: 1.2rem;
+
+.app-container {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+
+  h1 {
+    color: $primary-color;
+    font-size: $font-size-large;
+    margin-bottom: 1rem;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+
+  p {
+    font-size: $font-size-medium;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,13 @@
+// ==========================================================================
+// BOOTSTRAP - Bootstrap framework integration
+// ==========================================================================
+
+// For now, we're not importing Bootstrap to avoid compilation issues
+// Bootstrap will be imported via the index.js file as CSS
+// This keeps the compilation stable while we build our custom system
+
+// Future: When ready to fully integrate Bootstrap SCSS:
+// Override Bootstrap variables with our brand colors
+// $primary: $color-primary;
+// $secondary: $color-secondary;
+// Then import Bootstrap SCSS modules selectively

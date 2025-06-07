@@ -1,0 +1,96 @@
+// ==========================================================================
+// HOME PAGE - DRY & Optimized
+// ==========================================================================
+
+.homepage-container {
+  @include flex-column;
+  @include reset-spacing;
+
+  .hero-card {
+    @include brand-bg-hero;
+    border-radius: 0;
+    border-bottom: 6px solid color(primary);
+
+    @include respond-above(desktop) {
+      height: 80vh;
+    }
+
+    .card-img-overlay {
+      background-color: color(black);
+      opacity: 0.45;
+      border-radius: 0;
+    }
+
+    .hero-body {
+      z-index: z-index(sticky);
+      @include brand-layout-hero;
+      justify-content: center;
+      align-items: center;
+      gap: spacing(md);
+      padding: spacing(md);
+
+      @include respond-above(desktop-small) {
+        padding: spacing(xl);
+        column-gap: 0;
+      }
+
+      .welcome {
+        @include brand-font-welcome;
+        color: color(white);
+        white-space: pre-wrap;
+        word-wrap: break-word;
+
+        @include respond-above(tablet) {
+          max-width: 24rem;
+          justify-self: center;
+        }
+
+        @include respond-above(desktop-small) {
+          grid-row: 1;
+          grid-column: 1;
+          justify-self: center;
+          align-self: center;
+        }
+
+        @include respond-above(desktop) {
+          align-self: end;
+        }
+
+        @include respond-above(desktop-large) {
+          max-width: 28rem;
+        }
+      }
+
+      .call-action-text {
+        @include brand-font-call-action;
+        color: color(white);
+        word-wrap: break-word;
+        max-width: 14rem;
+
+        @include respond-above(desktop-small) {
+          grid-row: 1/2;
+          grid-column: 2;
+          align-self: end;
+          justify-self: start;
+        }
+
+        @include respond-above(desktop) {
+          grid-column: 2;
+          max-width: 20rem;
+        }
+      }
+
+      .call-action {
+        @include brand-button-hero;
+        justify-self: center;
+
+        @include respond-above(desktop-small) {
+          grid-row: 2;
+          grid-column: 1;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+    }
+  }
+}

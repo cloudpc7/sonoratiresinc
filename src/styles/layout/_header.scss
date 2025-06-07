@@ -1,0 +1,84 @@
+// ==========================================================================
+// HEADER LAYOUT - DRY & Optimized
+// ==========================================================================
+
+.header-container {
+  @include respond-above(desktop) {
+    justify-content: space-between;
+  }
+
+  .nav-row {
+    @include flex-between;
+    padding: spacing(md);
+
+    .cart-col {
+      flex: 0 0 75px;
+      @include flex-center;
+
+      .fa-cart-shopping {
+        @include size(25px);
+      }
+    }
+  }
+
+  .nav-col {
+    flex: 0;
+    justify-self: end;
+
+    .navbar-toggler {
+      border: none;
+      flex: 0 0 50px;
+      @include brand-bg-hamburger;
+      padding: 0 0.5em;
+    }
+  }
+
+  .header-title {
+    @include brand-font-header-title;
+    color: color(primary);
+    text-decoration: none;
+  }
+}
+
+.offcanvas {
+  box-sizing: border-box;
+  @include flex(row, flex-start);
+
+  .offcanvas-header {
+    @include flex-between;
+    gap: spacing(md);
+    padding: spacing(md);
+
+    .nav-title {
+      @include brand-font-header-title;
+      color: color(primary);
+      text-decoration: none;
+    }
+  }
+
+  .offcanvas-body {
+    padding: spacing(md);
+
+    .navbar {
+      @include flex-column;
+      gap: spacing(md);
+
+      @include respond-above(desktop) {
+        @include flex(row, flex-start, center);
+      }
+
+      .nav-link {
+        @include brand-button-nav;
+
+        .fa-2x {
+          @include size(25px);
+        }
+      }
+
+      .appt-btn {
+        @include brand-button-appointment;
+        min-width: 12rem;
+      }
+    }
+  }
+}

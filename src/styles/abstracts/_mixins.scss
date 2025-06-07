@@ -1,0 +1,504 @@
+// ==========================================================================
+// MIXINS - DRY & Organized by Purpose
+// ==========================================================================
+
+// RESPONSIVE MIXINS (DRY - Single source of truth)
+// -----------------
+@mixin respond-above($breakpoint) {
+  $bp-value: breakpoint($breakpoint);
+  @media (min-width: $bp-value) {
+    @content;
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  $bp-value: breakpoint($breakpoint);
+  @media (max-width: ($bp-value - 1px)) {
+    @content;
+  }
+}
+
+@mixin respond-between($min-bp, $max-bp) {
+  $min: breakpoint($min-bp);
+  $max: breakpoint($max-bp);
+  @media (min-width: $min) and (max-width: ($max - 1px)) {
+    @content;
+  }
+}
+
+// LAYOUT MIXINS (DRY - Flexbox & Grid)
+// -------------
+@mixin flex(
+  $direction: row,
+  $justify: flex-start,
+  $align: stretch,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  @include flex(row, center, center);
+}
+
+@mixin flex-between {
+  @include flex(row, space-between, center);
+}
+
+@mixin flex-column {
+  @include flex(column);
+}
+
+@mixin flex-column-center {
+  @include flex(column, center, center);
+}
+
+// Grid mixins (DRY)
+@mixin grid($columns: auto, $rows: auto, $gap: spacing(md)) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin grid-center {
+  place-items: center;
+}
+
+// TYPOGRAPHY MIXINS (DRY)
+// --------------------
+@mixin font(
+  $family: primary,
+  $size: base,
+  $weight: normal,
+  $line-height: normal
+) {
+  font-family: font-family($family);
+  font-size: font-size($size);
+  font-weight: font-weight($weight);
+  line-height: line-height($line-height);
+}
+
+@mixin responsive-font($element) {
+  font-size: responsive-font-size($element, xs);
+  letter-spacing: letter-spacing($element);
+  line-height: line-height($element);
+
+  @each $bp-name, $bp-value in $breakpoints {
+    @if $bp-name != xs {
+      @include respond-above($bp-name) {
+        font-size: responsive-font-size($element, $bp-name);
+      }
+    }
+  }
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// POSITIONING MIXINS (DRY)
+// ----------------------
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// COMPONENT MIXINS (DRY & Configurable)
+// ----------------
+
+// Button base (DRY)
+@mixin button-base($size: base) {
+  @include flex(row, center, center);
+  padding: component(buttons, padding, $size);
+  border: border-width() solid transparent;
+  border-radius: component(buttons, border-radius);
+  font-family: font-family(accent);
+  font-weight: font-weight(medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all transition(fast);
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Button variants (DRY)
+@mixin button-variant($bg-color, $text-color: color(white), $hover-bg: null) {
+  background-color: $bg-color;
+  color: $text-color;
+
+  $hover-color: if($hover-bg, $hover-bg, shade($bg-color, 8%));
+
+  &:hover:not(:disabled) {
+    background-color: $hover-color;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-outline(
+  $border-color,
+  $text-color: $border-color,
+  $hover-bg: $border-color
+) {
+  background-color: transparent;
+  border-color: $border-color;
+  color: $text-color;
+
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+    color: color(white);
+  }
+}
+
+// Card mixins (DRY)
+@mixin card-base {
+  background-color: color(white);
+  border-radius: component(cards, border-radius);
+  box-shadow: component(cards, shadow);
+  overflow: hidden;
+  transition: all transition(normal);
+}
+
+@mixin card-hover($lift: 4px) {
+  &:hover {
+    transform: translateY(-#{$lift});
+    box-shadow: shadow(lg);
+  }
+}
+
+// Form mixins (DRY)
+@mixin input-base {
+  width: 100%;
+  padding: component(forms, input-padding);
+  border: component(forms, border-width) solid tint(color(medium), 70%);
+  border-radius: component(forms, border-radius);
+  font-family: font-family(primary);
+  font-size: font-size(base);
+  transition: border-color transition(fast);
+
+  &:focus {
+    outline: none;
+    border-color: color(primary);
+    box-shadow: 0 0 0 3px alpha(color(primary), 0.1);
+  }
+
+  &::placeholder {
+    color: color(medium);
+  }
+}
+
+// BRAND-SPECIFIC MIXINS (Organized & DRY)
+// =====================
+
+// Typography mixins (brand-specific but DRY)
+@mixin brand-font-welcome {
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+
+  // DRY responsive sizing
+  font-size: 3rem;
+  @include respond-above(tablet) {
+    font-size: 3rem;
+  }
+  @include respond-above(desktop) {
+    font-size: 3.25rem;
+  }
+  @include respond-above(desktop-large) {
+    font-size: 4rem;
+  }
+}
+
+@mixin brand-font-call-action {
+  font-family: font-family(serif);
+  font-weight: font-weight(medium);
+  line-height: 1.3em;
+  letter-spacing: 0.12em;
+
+  font-size: 1.25rem;
+  @include respond-above(desktop) {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin brand-font-header-title {
+  font-family: font-family(accent);
+  font-weight: font-weight(bold);
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  font-size: 1em;
+  @include respond-above(desktop-small) {
+    font-size: 1.6rem;
+  }
+}
+
+// Brand button mixins (DRY)
+@mixin brand-button-base {
+  border: border-width() solid color(primary);
+  color: color(primary);
+  background-color: transparent;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 0;
+  transition: all transition(fast);
+
+  &:hover {
+    background-color: color(primary);
+    color: color(white);
+  }
+}
+
+@mixin brand-button-hero {
+  @include brand-button-base;
+  padding: 1rem 3rem;
+}
+
+@mixin brand-button-nav {
+  @include brand-button-base;
+  padding: 0.5em;
+}
+
+@mixin brand-button-appointment {
+  @include brand-button-base;
+  padding: 1rem 3rem;
+
+  @include respond-above(desktop) {
+    padding: 1rem 1.3rem;
+    min-width: 12.25rem;
+  }
+}
+
+@mixin brand-button-contact {
+  background-color: color(primary);
+  color: color(white);
+  padding: spacing(md) 2.25rem;
+  border: none;
+  border-radius: 0;
+  @include flex(row, center, center);
+  width: auto;
+
+  &:hover {
+    background-color: color(black);
+    color: color(primary);
+  }
+}
+
+// Background mixins (DRY with better organization)
+@mixin brand-bg-hero {
+  background-image: url("../../app/assets/images/hero-image.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+@mixin brand-bg-hamburger {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 16h24'/%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 24h24'/%3E%3C/svg%3E");
+}
+
+// Layout mixins (brand-specific but DRY)
+@mixin brand-layout-hero {
+  @include flex-column;
+  @include respond-above(desktop-small) {
+    @include grid(repeat(2, 1fr), repeat(3, auto));
+  }
+}
+
+@mixin brand-layout-features {
+  @include flex-column;
+  @include respond-above(desktop-small) {
+    @include grid(repeat(2, minmax(min-content, max-content)));
+  }
+}
+
+@mixin brand-layout-two-column {
+  @include flex(column, center, center);
+  @include respond-above(desktop-small) {
+    @include grid(repeat(2, minmax(min-content, max-content)));
+  }
+}
+
+// UTILITY MIXINS (DRY)
+// --------------
+@mixin reset-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+@mixin body-width {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// ANIMATION MIXINS (DRY)
+// ----------------
+@mixin fade-in($duration: transition(normal)) {
+  animation: fadeIn $duration ease-in-out;
+}
+
+@mixin slide-up($duration: transition(normal)) {
+  animation: slideUp $duration ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// LEGACY SUPPORT MIXINS (Backward compatibility)
+// ---------------------
+// These maintain backward compatibility while using the new DRY system
+
+@mixin gutter-reset {
+  @include reset-spacing;
+}
+@mixin width-full {
+  @include full-width;
+}
+@mixin width-body {
+  @include body-width;
+}
+@mixin display-flex-center {
+  @include flex-center;
+}
+@mixin display-flex-column {
+  @include flex-column;
+}
+@mixin display-flex-space-between {
+  @include flex-between;
+}
+@mixin display-flex-start {
+  @include flex(row, flex-start);
+}
+@mixin display-flex-column-center {
+  @include flex-column-center;
+}
+@mixin display-grid-hero {
+  @include brand-layout-hero;
+}
+@mixin display-grid-features {
+  @include brand-layout-features;
+}
+@mixin display-grid-appt {
+  @include brand-layout-two-column;
+}
+@mixin display-grid-about {
+  @include brand-layout-two-column;
+}
+
+@mixin font-welcome {
+  @include brand-font-welcome;
+}
+@mixin font-call-action-text {
+  @include brand-font-call-action;
+}
+@mixin font-header-title {
+  @include brand-font-header-title;
+}
+
+@mixin color-white {
+  color: color(white);
+}
+@mixin color-red {
+  color: color(dark);
+}
+@mixin color-yellow {
+  color: color(primary);
+}
+
+@mixin btn-hero {
+  @include brand-button-hero;
+}
+@mixin btn-nav-link {
+  @include brand-button-nav;
+}
+@mixin btn-appt {
+  @include brand-button-appointment;
+}
+
+@mixin bg-hero-image {
+  @include brand-bg-hero;
+}
+@mixin bg-hamburger {
+  @include brand-bg-hamburger;
+}
