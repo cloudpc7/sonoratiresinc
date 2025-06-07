@@ -74,19 +74,39 @@ const Header = ({ toggleForm, handleClose, handleShow, showNav }) => {
                       shop services
                     </Nav.Link>
                     <Nav.Link href="tel:9098776350">
-                      <FontAwesomeIcon icon={faPhone} size="2x" />
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        size="2x"
+                        className="fa-2x"
+                      />
                     </Nav.Link>
                     <Nav.Link to="/contact">
-                      <FontAwesomeIcon icon={faLocationDot} size="2x" />
+                      <FontAwesomeIcon
+                        icon={faLocationDot}
+                        size="2x"
+                        className="fa-2x"
+                      />
                     </Nav.Link>
                     <Nav.Link as={Link} to="https://x.com">
-                      <FontAwesomeIcon icon={faXTwitter} size="2x" />
+                      <FontAwesomeIcon
+                        icon={faXTwitter}
+                        size="2x"
+                        className="fa-2x"
+                      />
                     </Nav.Link>
                     <Nav.Link as={Link} to="https://facebook.com">
-                      <FontAwesomeIcon icon={faFacebook} size="2x" />
+                      <FontAwesomeIcon
+                        icon={faFacebook}
+                        size="2x"
+                        className="fa-2x"
+                      />
                     </Nav.Link>
                     <Nav.Link as={Link} to="https://instagram.com">
-                      <FontAwesomeIcon icon={faInstagram} size="2x" />
+                      <FontAwesomeIcon
+                        icon={faInstagram}
+                        size="2x"
+                        className="fa-2x"
+                      />
                     </Nav.Link>
                   </Navbar>
                 </Offcanvas.Body>
