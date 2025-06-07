@@ -44,7 +44,11 @@ const Header = ({ toggleForm, handleClose, handleShow, showNav }) => {
           <a className="header-title">sonora tires inc.</a>
         </Col>
         <Col className="cart-col">
-          <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            size="2x"
+            className="fa-cart-shopping"
+          />
         </Col>
         <Col className="nav-col">
           <Navbar expand="lg">
